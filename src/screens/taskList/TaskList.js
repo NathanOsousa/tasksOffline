@@ -13,12 +13,14 @@ export default class TaskList extends Component {
             <View style={style.container}>
                 <ImageBackground style={style.backGround} source={todayImage}>
                     <View style={style.titleBar}>
-                        <Text>Hoje</Text>
-                        <Text>{today}</Text>
+                        <Text style={style.title}>Hoje</Text>
+                        <Text style={style.subtitle}>{today}</Text>
                     </View>
                 </ImageBackground>
                 <View style={style.taskList}>
-                    <Text>TaskList</Text>
+                    <Text> Task #01 </Text>
+                    <Text> Task #02</Text>
+                    <Text> Task #03</Text>
                 </View>
             </View>
         )
