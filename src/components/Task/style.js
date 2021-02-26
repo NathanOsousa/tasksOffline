@@ -30,5 +30,10 @@ export default StyleSheet.create({
         backgroundColor: '#4d7031',
         alignItems: 'center',
         justifyContent: 'center'
+    },
+    desc: {
+        fontFamily: globalStyles.fontFamily,
+        color: globalStyles.colors.mainText,
+        fontSize: 15,
     }
 })

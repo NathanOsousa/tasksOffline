@@ -6,8 +6,9 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 
 export default props => {
 
-    function getCheckView(doneAt) {
+    const isDoneStyle = props.doneAt != null ? { textDecorationLine: 'line-through' } : {}
 
+    const getCheckView = (doneAt) => {
         if (doneAt != null) {
             return (
                 <View style={style.done}>
@@ -27,7 +28,7 @@ export default props => {
                 {getCheckView(props.doneAt)}
             </View>
             <View>
-                <Text> {props.desc} </Text>
+                <Text style={[style.desc, isDoneStyle]}> {props.desc} </Text>
                 <Text> {props.estimatedAt + ""}</Text>
             </View>
         </View>
