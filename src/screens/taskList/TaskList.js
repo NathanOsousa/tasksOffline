@@ -21,6 +21,11 @@ export default class TaskList extends Component {
                 <View style={style.taskList}>
                     <Task desc="comprar livro" estimatedAt={new Date()}
                         doneAt={new Date()} />
+                    <Task desc="comprar livro" estimatedAt={new Date()} doneAt={new Date()} />
+                    <Task desc="ler livro" estimatedAt={new Date()} />
+                    <Task desc="comprar livro" estimatedAt={new Date()} doneAt={new Date()} />
+                    <Task desc="ler livro" estimatedAt={new Date()} />
+                    <Task desc="comprar livro" estimatedAt={new Date()} doneAt={new Date()} />
                     <Task desc="ler livro" estimatedAt={new Date()} />
                 </View>
             </View>

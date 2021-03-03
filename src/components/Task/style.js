@@ -35,5 +35,10 @@ export default StyleSheet.create({
         fontFamily: globalStyles.fontFamily,
         color: globalStyles.colors.mainText,
         fontSize: 15,
+    },
+    date: {
+        fontFamily: globalStyles.fontFamily,
+        color: globalStyles.colors.subText,
+        fontSize: 12,
     }
 })
