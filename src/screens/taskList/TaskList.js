@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, ImageBackground } from 'react-native'
+import { Text, View, ImageBackground, FlatList } from 'react-native'
 import style from './style'
 import todayImage from '../../../assets/imgs/today.jpg'
 import moment from 'moment'
@@ -8,6 +8,23 @@ import Task from '../../components/Task/task'
 
 const today = moment().local('pt-br').format('ddd, D [de] MMMM');
 export default class TaskList extends Component {
+
+    state = {
+        tasks: [
+            {
+                id: Math.random(),
+                desc: 'Estudar node js',
+                estimatedAt: new Date(),
+                doneAt: new Date(),
+            },
+            {
+                id: Math.random(),
+                desc: 'Estudar node js',
+                estimatedAt: new Date(),
+                doneAt: null,
+            },
+        ]
+    }
 
     render() {
         return (
@@ -19,14 +36,7 @@ export default class TaskList extends Component {
                     </View>
                 </ImageBackground>
                 <View style={style.taskList}>
-                    <Task desc="comprar livro" estimatedAt={new Date()}
-                        doneAt={new Date()} />
-                    <Task desc="comprar livro" estimatedAt={new Date()} doneAt={new Date()} />
-                    <Task desc="ler livro" estimatedAt={new Date()} />
-                    <Task desc="comprar livro" estimatedAt={new Date()} doneAt={new Date()} />
-                    <Task desc="ler livro" estimatedAt={new Date()} />
-                    <Task desc="comprar livro" estimatedAt={new Date()} doneAt={new Date()} />
-                    <Task desc="ler livro" estimatedAt={new Date()} />
+                    <FlatList data={this.state.tasks} keyExtractor={(item) => item.id} renderItem={({ item }) => <Task {...item} />} />
                 </View>
             </View>
         )

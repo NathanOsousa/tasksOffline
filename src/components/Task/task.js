@@ -4,27 +4,11 @@ import style from './style'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import moment from 'moment'
 import 'moment/locale/pt-br'
-//import Task from '../Task/task'
-
 
 
 
 export default props => {
 
-    const state = {
-        tasks: [{
-            id: Math.random(),
-            desc: 'Estudar node js',
-            estimatedAt: new Date(),
-            doneAt: new Date(),
-        },
-        {
-            id: Math.random(),
-            desc: 'Estudar node js',
-            estimatedAt: new Date(),
-            doneAt: new Date(),
-        }]
-    }
 
     const isDoneStyle = props.doneAt != null ? { textDecorationLine: 'line-through' } : {}
 

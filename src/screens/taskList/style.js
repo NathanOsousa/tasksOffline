@@ -3,13 +3,13 @@ import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
     container: {
-        flexGrow: 1
+        flex: 1
     },
     backGround: {
-        flexGrow: 3
+        flex: 3
     },
     taskList: {
-        flexGrow: 7,
+        flex: 7,
     },
     titleBar: {
         flex: 1,
