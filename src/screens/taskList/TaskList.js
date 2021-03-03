@@ -26,6 +26,16 @@ export default class TaskList extends Component {
         ]
     }
 
+    toggleTask = (taskId) => {
+        const tasks = [...this.state.tasks]
+        tasks.forEach(task => {
+            if (task.id === taskId) {
+                task.doneAt = task.doneAt ? null : new Date()
+            }
+        })
+        this.setState({ tasks })
+    }
+
     render() {
         return (
             <View style={style.container}>
@@ -36,7 +46,9 @@ export default class TaskList extends Component {
                     </View>
                 </ImageBackground>
                 <View style={style.taskList}>
-                    <FlatList data={this.state.tasks} keyExtractor={(item) => item.id} renderItem={({ item }) => <Task {...item} />} />
+                    <FlatList data={this.state.tasks}
+                        keyExtractor={(item) => item.id}
+                        renderItem={({ item }) => <Task {...item} toggleTask={this.toggleTask} />} />
                 </View>
             </View>
         )
