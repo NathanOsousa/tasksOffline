@@ -1,5 +1,5 @@
 import globalStyles from '../../globalStyles';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Platform} from 'react-native';
 
 export default StyleSheet.create({
   container: {
@@ -28,5 +28,11 @@ export default StyleSheet.create({
     fontSize: 20,
     marginLeft: 20,
     marginBottom: 20,
+  },
+  iconBar: {
+    flexDirection: 'row',
+    marginHorizontal: 20,
+    justifyContent: 'flex-end',
+    marginTop: Platform.OS === 'ios' ? 40 : 10,
   },
 });
