@@ -6,12 +6,43 @@ import {
   TouchableWithoutFeedback,
   TouchableOpacity,
   TextInput,
+  Platform,
 } from 'react-native';
+import DateTimePicker from '@react-native-community/datetimepicker';
 import style from './style';
-const InitialState = {desc: ''};
+import moment from 'moment';
+
+const InitialState = {desc: '', date: new Date(), showDatePicker: false};
 export class AddTask extends Component {
   state = {
     ...InitialState,
+  };
+
+  getDateTimePicker = () => {
+    let datePicker = (
+      <DateTimePicker
+        value={this.state.date}
+        onChange={(_, date) => this.setState({date, showDatePicker: false})}
+        mode="date"
+      />
+    );
+
+    const dateString = moment(this.state.date).format(
+      'ddd, D [de] MMMM [de] YYYY',
+    );
+
+    if (Platform.OS === 'android') {
+      datePicker = (
+        <View>
+          <TouchableOpacity
+            onPress={() => this.setState({showDatePicker: true})}>
+            <Text style={style.date}>{dateString}</Text>
+          </TouchableOpacity>
+          {this.state.showDatePicker && datePicker}
+        </View>
+      );
+    }
+    return datePicker;
   };
 
   render() {
@@ -26,6 +57,7 @@ export class AddTask extends Component {
         </TouchableWithoutFeedback>
         <View style={style.container}>
           <Text style={style.header}>Nova Tarefa</Text>
+          {this.getDateTimePicker()}
           <TextInput
             style={style.input}
             placeholder="Descrição da Tarefa"

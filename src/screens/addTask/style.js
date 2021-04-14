@@ -37,4 +37,9 @@ export default StyleSheet.create({
     marginRight: 30,
     color: globalStyles.colors.today,
   },
+  date: {
+    fontSize: 20,
+    fontFamily: globalStyles.fontFamily,
+    marginLeft: 15,
+  },
 });
