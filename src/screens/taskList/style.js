@@ -35,4 +35,15 @@ export default StyleSheet.create({
     justifyContent: 'flex-end',
     marginTop: Platform.OS === 'ios' ? 40 : 10,
   },
+  addButton: {
+    position: 'absolute',
+    right: 30,
+    bottom: 30,
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    backgroundColor: globalStyles.colors.today,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });

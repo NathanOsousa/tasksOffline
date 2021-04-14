@@ -1,5 +1,12 @@
 import React, {Component} from 'react';
-import {Text, View, ImageBackground, FlatList, Pressable} from 'react-native';
+import {
+  Text,
+  View,
+  ImageBackground,
+  FlatList,
+  Pressable,
+  TouchableOpacity,
+} from 'react-native';
 import style from './style';
 import todayImage from '../../../assets/imgs/today.jpg';
 import moment from 'moment';
@@ -80,6 +87,7 @@ export default class TaskList extends Component {
               />
             </Pressable>
           </View>
+
           <View style={style.titleBar}>
             <Text style={style.title}>Hoje</Text>
             <Text style={style.subtitle}>{today}</Text>
@@ -93,6 +101,13 @@ export default class TaskList extends Component {
               <Task {...item} toggleTask={this.toggleTask} />
             )}
           />
+
+          <TouchableOpacity
+            activeOpacity={0.7}
+            style={style.addButton}
+            onPress={() => this.setState({showAddTask: true})}>
+            <Icon name={'plus'} size={20} color="#FFF" />
+          </TouchableOpacity>
         </View>
       </View>
     );
