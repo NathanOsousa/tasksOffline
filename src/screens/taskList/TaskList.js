@@ -106,8 +106,8 @@ export default class TaskList extends Component {
           </View>
 
           <View style={style.titleBar}>
-            <Text style={style.title}>Hoje</Text>
-            <Text style={style.subtitle}>{today}</Text>
+            {/* <Text style={style.title}>Hoje</Text>
+            <Text style={style.subtitle}>{today}</Text> */}
           </View>
         </ImageBackground>
         <View style={style.taskList}>
