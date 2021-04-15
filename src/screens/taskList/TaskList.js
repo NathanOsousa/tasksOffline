@@ -15,31 +15,24 @@ import 'moment/locale/pt';
 import Task from '../../components/Task/task';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {AddTask} from '../addTask/AddTask';
+import AsyncStorage from '@react-native-community/async-storage';
 
 const today = moment().local('pt-br').format('ddd, D [de] MMMM');
+const initialState = {
+  showAddTask: false,
+  showDoneTasks: true,
+  visibleTasks: [],
+  tasks: [],
+};
 export default class TaskList extends Component {
   state = {
-    showAddTask: false,
-    showDoneTasks: true,
-    visibleTasks: [],
-    tasks: [
-      {
-        id: Math.random(),
-        desc: 'Estudar node js',
-        estimatedAt: new Date(),
-        doneAt: new Date(),
-      },
-      {
-        id: Math.random(),
-        desc: 'Estudar React native',
-        estimatedAt: new Date(),
-        doneAt: null,
-      },
-    ],
+    ...initialState,
   };
 
-  componentDidMount = () => {
-    this.filterTasks();
+  componentDidMount = async () => {
+    const stateString = await AsyncStorage.getItem('tasksState'); //pega o estado do asyncStorage em string
+    const state = JSON.parse(stateString) || initialState; //salva o state como json ou pega o state inical
+    this.setState(state, this.filterTasks); //salva no state da pagina
   };
 
   toggleTask = taskId => {
@@ -63,6 +56,7 @@ export default class TaskList extends Component {
     }
 
     this.setState({visibleTasks});
+    AsyncStorage.setItem('tasksState', JSON.stringify(this.state)); //salva estado no asyncStorage
   };
 
   toggleFilter = () => {
