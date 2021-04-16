@@ -46,4 +46,19 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  deleteAlert: {
+    position: 'absolute',
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    bottom: 30,
+    borderRadius: 24,
+    width: '90%',
+    height: 20,
+    alignItems: 'center',
+    alignSelf: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+  alertText: {
+    color: 'white',
+  },
 });

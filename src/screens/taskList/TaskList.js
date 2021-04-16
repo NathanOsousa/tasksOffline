@@ -130,6 +130,12 @@ export default class TaskList extends Component {
             <Icon name={'plus'} size={20} color="#FFF" />
           </TouchableOpacity>
         </View>
+        <View style={style.deleteAlert}>
+          <Text style={style.alertText}>
+            Estamos excluindo o registo x, "Desfazer"
+          </Text>
+          <Icon name="undo" size={15} color="#FFF" />
+        </View>
       </View>
     );
   }
