@@ -29,6 +29,7 @@ const style = StyleSheet.create({
     marginTop: 10,
     padding: 10,
     alignItems: 'center',
+    borderRadius: 7,
   },
   buttonText: {
     fontFamily: globalStyles.fontFamily,
@@ -41,6 +42,24 @@ const style = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     marginBottom: 10,
+  },
+
+  container: {
+    width: '100%',
+    height: 40,
+    backgroundColor: '#EEE',
+    borderRadius: 12,
+    flexDirection: 'row',
+    alignSelf: 'center',
+  },
+  icon: {
+    color: '#333',
+    marginLeft: 20,
+    alignSelf: 'center',
+  },
+  inputComponent: {
+    marginLeft: 20,
+    width: '70%',
   },
 });
 

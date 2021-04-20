@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import backgroundImage from '.././../../assets/imgs/login.jpg';
 import style from './style';
+import Input from './input';
 
 const Auth = () => {
   const [email, setEmail] = useState('');
@@ -33,27 +34,31 @@ const Auth = () => {
           {isRegister ? 'Crie sua conta' : 'Informe seus dados'}
         </Text>
         {isRegister && (
-          <TextInput
+          <Input
+            icon="user"
             placeholder="Nome"
             value={name}
             onChangeText={n => setName(n)}
             style={style.input}
           />
         )}
-        <TextInput
+        <Input
+          icon="at"
           placeholder="E-mail"
           value={email}
           onChangeText={e => setEmail(e)}
           style={style.input}
         />
-        <TextInput
+        <Input
+          icon="lock"
           placeholder="Senha"
           value={password}
           onChangeText={p => setPassword(p)}
           style={style.input}
         />
         {isRegister && (
-          <TextInput
+          <Input
+            icon="asterisk"
             placeholder="Confirme sua senha"
             value={confirmPassword}
             onChangeText={e => setConfirmPassword(e)}
