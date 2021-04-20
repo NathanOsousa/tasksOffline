@@ -1,15 +1,10 @@
 import React, {useState} from 'react';
-import {
-  View,
-  Text,
-  ImageBackground,
-  TextInput,
-  Pressable,
-  Alert,
-} from 'react-native';
+import {View, Text, ImageBackground, Pressable, Alert} from 'react-native';
 import backgroundImage from '.././../../assets/imgs/login.jpg';
 import style from './style';
 import Input from './input';
+import {server, showError, showSuccess} from '../../utils/common';
+import axios from 'axios';
 
 const Auth = () => {
   const [email, setEmail] = useState('');
@@ -18,11 +13,33 @@ const Auth = () => {
   const [name, setName] = useState('');
   const [isRegister, setIsRegister] = useState(false);
 
+  const clearState = () => {
+    setEmail('');
+    setPassword('');
+    setConfirmPassword('');
+    setName('');
+  };
+
   const singInOrSignUp = () => {
     if (isRegister) {
-      Alert.alert('Sucess!', 'Criar conta');
+      singUp();
     } else {
       Alert.alert('Sucess!', 'Criar conta');
+    }
+  };
+
+  const singUp = async () => {
+    try {
+      await axios.post(`${server}/singmup`, {
+        name,
+        email,
+        password,
+        confirmPassword,
+      });
+      showSuccess('Usuário cadastrado !');
+      clearState();
+    } catch (ex) {
+      showError(ex);
     }
   };
 
