@@ -23,7 +23,7 @@ const initialState = {
   showDoneTasks: true,
   visibleTasks: [],
   tasks: [],
-  showAlert: true,
+  showAlert: false,
 };
 export default class TaskList extends Component {
   state = {
