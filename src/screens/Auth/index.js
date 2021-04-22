@@ -6,7 +6,7 @@ import Input from './input';
 import {server, showError, showSuccess} from '../../utils/common';
 import axios from 'axios';
 
-const Auth = () => {
+const Auth = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -24,7 +24,7 @@ const Auth = () => {
     if (isRegister) {
       singUp();
     } else {
-      Alert.alert('Sucess!', 'Criar conta');
+      singIn();
     }
   };
 
@@ -42,6 +42,31 @@ const Auth = () => {
       showError(ex);
     }
   };
+
+  const singIn = async () => {
+    try {
+      // const res = await axios.post(`${server}/singin`, {
+      //   email,
+      //   password,
+      // });
+      // axios.defaults.headers.common[
+      //   'Authorization'
+      // ] = `bearer ${res.data.token}`;
+      navigation.navigate('Home');
+    } catch (error) {
+      showError(error);
+    }
+  };
+
+  const validations = [];
+  validations.push(email && email.includes('@'));
+  validations.push(password && password.length >= 6);
+  if (isRegister) {
+    validations.push(name && name.trim().length >= 3);
+    validations.push(password === confirmPassword);
+  }
+
+  const validForm = validations.reduce((t, a) => t && a);
 
   return (
     <ImageBackground style={style.background} source={backgroundImage}>
@@ -82,7 +107,10 @@ const Auth = () => {
             style={style.input}
           />
         )}
-        <Pressable style={style.button} onPress={singInOrSignUp}>
+        <Pressable
+          style={[style.button, validForm ? {} : {backgroundColor: '#AAA'}]}
+          onPress={singInOrSignUp}
+          disabled={!validForm}>
           <Text style={style.buttonText}>
             {isRegister ? 'Registrar' : 'Entrar'}
           </Text>
