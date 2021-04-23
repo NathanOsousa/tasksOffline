@@ -3,6 +3,24 @@ import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 import {createDrawerNavigator} from 'react-navigation-drawer';
 import Auth from './screens/Auth';
 import TaskList from './screens/taskList/TaskList';
+import Menu from '../src/screens/menu';
+import globalStyles from './globalStyles';
+
+const menuConfig = {
+  initialRouteName: 'today',
+  contentComponent: Menu,
+  contentOptions: {
+    labelStyle: {
+      fontFamily: globalStyles.fontFamily,
+      fontWeight: 'normal',
+      fontSize: 20,
+    },
+    activeLabelStyle: {
+      color: '#080',
+      fontWeight: 'bold',
+    },
+  },
+};
 
 const menuRoutes = {
   today: {
@@ -35,7 +53,7 @@ const menuRoutes = {
   },
 };
 
-const menuNavigator = createDrawerNavigator(menuRoutes);
+const menuNavigator = createDrawerNavigator(menuRoutes, menuConfig);
 
 const mainRoutes = {
   Auth: {
