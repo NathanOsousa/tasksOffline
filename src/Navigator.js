@@ -49,7 +49,7 @@ const mainRoutes = {
 };
 
 const mainNavigation = createSwitchNavigator(mainRoutes, {
-  initialRouteName: 'Auth',
+  initialRouteName: 'Home',
 });
 
 export default createAppContainer(mainNavigation);

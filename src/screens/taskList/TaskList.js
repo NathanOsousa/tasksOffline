@@ -34,7 +34,10 @@ export default class TaskList extends Component {
 
   loadTasks = async () => {
     try {
-      const maxDate = moment().endOf('day').format('YYYY-MM-DD 23:59:59');
+      const maxDate = moment()
+        .add({days: this.props.daysAhead})
+        .endOf('day')
+        .format('YYYY-MM-DD 23:59:59');
       const res = await axios.get(`${server}/tasks?date=${maxDate}`);
       this.setState({tasks: res.data}, this.filterTasks);
     } catch (error) {
@@ -120,6 +123,11 @@ export default class TaskList extends Component {
         <ImageBackground style={style.backGround} source={todayImage}>
           <View style={style.iconBar}>
             <Pressable
+              onPress={() => this.props.navigation.openDrawer()}
+              hitSlop={{top: 30, bottom: 30, left: 30, right: 30}}>
+              <Icon name={'bars'} size={20} color="#FFF" />
+            </Pressable>
+            <Pressable
               onPress={this.toggleFilter}
               hitSlop={{top: 30, bottom: 30, left: 30, right: 30}}>
               <Icon
@@ -131,7 +139,7 @@ export default class TaskList extends Component {
           </View>
 
           <View style={style.titleBar}>
-            <Text style={style.title}>Hoje</Text>
+            <Text style={style.title}>{this.props.title}</Text>
             <Text style={style.subtitle}>{today}</Text>
           </View>
         </ImageBackground>
