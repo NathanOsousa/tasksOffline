@@ -5,6 +5,7 @@ import Auth from './screens/Auth';
 import TaskList from './screens/taskList/TaskList';
 import Menu from '../src/screens/menu';
 import globalStyles from './globalStyles';
+import AuthOrApp from './screens/AuthOrApp';
 
 const menuConfig = {
   initialRouteName: 'today',
@@ -64,10 +65,15 @@ const mainRoutes = {
     name: 'Home',
     screen: menuNavigator,
   },
+  AuthOrApp: {
+    name: 'AuthOrApp',
+    screen: AuthOrApp,
+  },
 };
 
 const mainNavigation = createSwitchNavigator(mainRoutes, {
-  initialRouteName: 'Auth',
+  initialRouteName: 'Home',
+  //initialRouteName: 'AuthOrApp',
 });
 
 export default createAppContainer(mainNavigation);

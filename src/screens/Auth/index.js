@@ -5,6 +5,7 @@ import style from './style';
 import Input from './input';
 import {server, showError, showSuccess} from '../../utils/common';
 import axios from 'axios';
+import AsyncStorage from '@react-native-community/async-storage';
 
 const Auth = ({navigation}) => {
   const [email, setEmail] = useState('');
@@ -49,6 +50,7 @@ const Auth = ({navigation}) => {
       //   email,
       //   password,
       // });
+      //AsyncStorage.setItem('userData', JSON.stringify(res.data));
       // axios.defaults.headers.common[
       //   'Authorization'
       // ] = `bearer ${res.data.token}`;
